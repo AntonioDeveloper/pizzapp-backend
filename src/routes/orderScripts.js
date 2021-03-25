@@ -16,21 +16,19 @@ router.get('/', async (req, res) => {
 });
 
 // Submit new orders
-router.post('/new', async (req, res) => {
-  const client = Order.client;
+router.post('/new', async (req, res) => {  
   const order = new Order(req.body);  
   const clientId = req.body.id;
-  console.log(req.body.id)
-
+  
   try{
     const savedOrder = await order.save()   
         
     const client = await Client.findById(clientId);
     
     client.orders.push(savedOrder);
-    await client.save();
-    
+    await client.save();    
     res.json(savedOrder);
+
     } catch(err){
     res.json({message: err});
     };
@@ -61,9 +59,14 @@ router.patch('/:id', async(req, res) => {
   try{
     const updatedOrder = await Order.updateOne({_id: req.params.id}, 
     {$set: {
-      name: req.body.name,
-      tel: req.body.tel,
-      address: req.body.address}});
+      pizza: req.body.pizza,
+      split: req.body.split,
+      dough: req.body.dough,
+      extraSauce: req.body.extraSauce,
+      delivery_address: req.body.delivery_address,
+      message: req.body.message,
+      status: req.body.status
+    }});
     res.json(updatedOrder);
   } catch(err){
     res.json({message: err});

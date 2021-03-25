@@ -15,17 +15,12 @@ const clientSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  // REFERS TO THE CHILD ENTITY
    orders: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Order'
   }], 
 });
-
-/* clientSchema.virtual('order', {
-  ref: 'Order',
-  localField: '_id',
-  foreignField:'clientId'
-}); */
 
 const Client = mongoose.model('Client', clientSchema);
 

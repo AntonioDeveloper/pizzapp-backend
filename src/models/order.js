@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-
 pizza: {
   type: String,
   required: true
@@ -33,6 +32,7 @@ status: {
   required: true,
   default: 'open'
 },
+// REFERS TO THE PARENT ENTITY
 client: {
   type: mongoose.Schema.Types.ObjectId,
   ref:'Client'
