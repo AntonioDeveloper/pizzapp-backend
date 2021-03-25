@@ -6,14 +6,18 @@ const cors = require('cors');
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+  'http://localhost:3000'
+));
 
 //ROUTES
-const postsRoute = require('./routes/posts');
+const clientRoute = require('./routes/clientScripts');
+const orderRoute = require('./routes/orderScripts');
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json())
-app.use('/posts', postsRoute)
+app.use('/client', clientRoute);
+app.use('/order', orderRoute);
 
 
 //Connect to MongoDB

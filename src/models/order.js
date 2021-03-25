@@ -1,31 +1,44 @@
 const mongoose = require('mongoose');
 
-const OrderSchema = new mongoose.Schema({
-assignedTo: {
-  type: mongoose.Schema.Types.ObjectId,
-  ref: 'Client',
-  require: true,
+const orderSchema = new mongoose.Schema({
+
+pizza: {
+  type: String,
+  required: true
 },
-items: {
-  type: mongoose.Schema.Types.ObjectId,
-  ref: 'Flavours',
+split: {
+  type: Boolean,
+  default: false,
+  required: true
+},
+dough: {
+  type: String,
   required: true,
+},
+extraSauce: {
+  type: Boolean,
+  required: true,
+  default: false
 },
 delivery_address: {
   type: String,
-  require: false
+  required: false
 },
 message: {
   type: String,
-  require: false,
+  required: false,
 },
 status: {
   type: String,
-  require: true,
+  required: true,
   default: 'open'
+},
+client: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref:'Client'
 }
 });
 
-const Order = mongoose.model('Order', OrderSchema);
+const Order = mongoose.model('Order', orderSchema);
 
 module.exports = Order;

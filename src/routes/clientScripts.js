@@ -6,7 +6,7 @@ const Order = require('../models/order');
 
 
 //Gets all the clients
-router.get('/', async (req, res) => {
+router.get('/clients', async (req, res) => {
   try{
     const allClients = await Client.find();
     res.send(allClients);
@@ -19,8 +19,7 @@ router.get('/', async (req, res) => {
 // Submit new clients
 router.post('/', async (req, res) => {
   const client = new Client(req.body);
-  //console.log(client);
-
+  
   try{
     const savedClient = await client.save()
     res.json(savedClient);
@@ -29,11 +28,14 @@ router.post('/', async (req, res) => {
     };
 }); 
 
+
+
 //Get a specific client
 router.get('/:id', async (req, res) => {
   try{
     const client = await Client.findById(req.params.id);
     res.json(client);
+    
   } catch (err){
     res.json({message: err});
   }
