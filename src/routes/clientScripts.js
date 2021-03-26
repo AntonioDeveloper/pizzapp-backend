@@ -3,8 +3,6 @@ const router = express.Router();
 const Client = require('../models/client');
 const Order = require('../models/order');
 
-
-
 //Gets all the clients
 router.get('/clients', async (req, res) => {
   try{
@@ -13,7 +11,6 @@ router.get('/clients', async (req, res) => {
   } catch(err){
     res.send("Erro aqui");
   }
-  res.send('Belezinha!!');
 });
 
 // Submit new clients

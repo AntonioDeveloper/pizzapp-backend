@@ -5,14 +5,13 @@ const Client = require('../models/client');
 //const Pizza = require('../models/pizza');
 
 //Gets all the orders
-router.get('/', async (req, res) => {
+router.get('/orders', async (req, res) => {
   try{
     const allOrders = await Order.find();
     res.send(allOrders);
   } catch(err){
     res.send("Erro aqui");
-  }
-  res.send('Belezinha!!');
+  }  
 });
 
 // Submit new orders
@@ -72,7 +71,5 @@ router.patch('/:id', async(req, res) => {
     res.json({message: err});
   }
 })
-
-
 
 module.exports = router;
