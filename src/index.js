@@ -13,11 +13,13 @@ app.use(cors(
 //ROUTES
 const clientRoute = require('./routes/clientScripts');
 const orderRoute = require('./routes/orderScripts');
+const statusRoute = require('./routes/statusScripts');
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json())
 app.use('/client', clientRoute);
 app.use('/order', orderRoute);
+app.use('/status', statusRoute);
 
 
 //Connect to MongoDB

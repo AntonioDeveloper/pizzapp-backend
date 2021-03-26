@@ -54,7 +54,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 //Update order
-router.patch('/:id', async(req, res) => {
+router.patch('/update/:id', async(req, res) => {
   try{
     const updatedOrder = await Order.updateOne({_id: req.params.id}, 
     {$set: {

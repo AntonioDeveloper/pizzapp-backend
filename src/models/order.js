@@ -36,6 +36,11 @@ status: {
 client: {
   type: mongoose.Schema.Types.ObjectId,
   ref:'Client'
+},
+// REFERS TO THE CHILD ENTITY
+status: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: 'Status'
 }
 });
 
