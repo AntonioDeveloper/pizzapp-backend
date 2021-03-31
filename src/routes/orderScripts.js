@@ -56,19 +56,21 @@ router.delete('/:id', async (req, res) => {
 
 //Update order
 router.patch('/update/:id', async(req, res) => {
-  console.log(req.body);
+  const id = req.params._id;
+  console.log(req.body.item.status);
   try{
-    const updatedOrder = await Order.updateOne({_id: req.params.id}, 
+    const updatedOrder = await Order.findOneAndUpdate(id,
       {$set: {
-        pizza: req.body.pizza,
-        split: req.body.split,
-        dough: req.body.dough,
-        extraSauce: req.body.extraSauce,
-        delivery_address: req.body.delivery_address,
-        message: req.body.message,
-        status: req.body.status,
-        icon: req.body.icon
-      }});
+        pizza: req.body.item.pizza,
+        split: req.body.item.split,
+        dough: req.body.item.dough,
+        extraSauce: req.body.item.extraSauce,
+        delivery_address: req.body.item.delivery_address,
+        message: req.body.item.message,
+        status: req.body.item.status,
+        icon: req.body.item.icon
+      }}, {new: true});
+      console.log(updatedOrder);
       res.json(updatedOrder);
   } catch(err){
     res.json({message: err});
