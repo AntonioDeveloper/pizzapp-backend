@@ -3,7 +3,7 @@ const router = express.Router();
 const Status = require('../models/status');
 
 //Gets all the status
-router.get('/statuses', async (req, res) => {
+router.get('/', async (req, res) => {
   try{
     const allStatuses = await Status.find();
     res.send(allStatuses);

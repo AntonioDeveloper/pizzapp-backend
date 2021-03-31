@@ -9,6 +9,7 @@ router.get('/orders', async (req, res) => {
   try{
     const allOrders = await Order.find();
     res.send(allOrders);
+    //console.log(allOrders)
   } catch(err){
     res.send("Erro aqui");
   }  
@@ -55,6 +56,7 @@ router.delete('/:id', async (req, res) => {
 
 //Update order
 router.patch('/update/:id', async(req, res) => {
+  console.log(req.body);
   try{
     const updatedOrder = await Order.updateOne({_id: req.params.id}, 
     {$set: {
@@ -66,7 +68,7 @@ router.patch('/update/:id', async(req, res) => {
       message: req.body.message,
       status: req.body.status
     }});
-    res.json(updatedOrder);
+    res.json(updatedOrder.status);
   } catch(err){
     res.json({message: err});
   }

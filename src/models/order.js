@@ -27,20 +27,19 @@ message: {
   type: String,
   required: false,
 },
+icon: {
+  type: String,
+  required: true
+},
 status: {
   type: String,
   required: true,
-  default: 'open'
+  default: 'aberto'
 },
 // REFERS TO THE PARENT ENTITY
 client: {
   type: mongoose.Schema.Types.ObjectId,
   ref:'Client'
-},
-// REFERS TO THE CHILD ENTITY
-status: {
-  type: mongoose.Schema.Types.ObjectId,
-  ref: 'Status'
 }
 });
 
