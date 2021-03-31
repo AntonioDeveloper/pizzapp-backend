@@ -59,16 +59,17 @@ router.patch('/update/:id', async(req, res) => {
   console.log(req.body);
   try{
     const updatedOrder = await Order.updateOne({_id: req.params.id}, 
-    {$set: {
-      pizza: req.body.pizza,
-      split: req.body.split,
-      dough: req.body.dough,
-      extraSauce: req.body.extraSauce,
-      delivery_address: req.body.delivery_address,
-      message: req.body.message,
-      status: req.body.status
-    }});
-    res.json(updatedOrder.status);
+      {$set: {
+        pizza: req.body.pizza,
+        split: req.body.split,
+        dough: req.body.dough,
+        extraSauce: req.body.extraSauce,
+        delivery_address: req.body.delivery_address,
+        message: req.body.message,
+        status: req.body.status,
+        icon: req.body.icon
+      }});
+      res.json(updatedOrder);
   } catch(err){
     res.json({message: err});
   }
