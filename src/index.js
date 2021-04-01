@@ -23,7 +23,7 @@ app.use('/status', statusRoute);
 
 
 //Connect to MongoDB
-mongoose.connect(process.env.ATLAS_URI,{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true },
+mongoose.connect(process.env.ATLAS_URI,{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false },
   () => console.log("DB online!!"));
 
 
