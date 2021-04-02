@@ -16,13 +16,13 @@ router.get('/orders', async (req, res) => {
 });
 
 // Submit new orders
-router.post('/new', async (req, res) => {  
+router.post('/cadastrarped', async (req, res) => {  
   const order = new Order(req.body);  
-  const clientId = req.body.id;
-  
+  const clientId = req.body.clientId;
   try{
-    const savedOrder = await order.save()   
-        
+    const savedOrder = await order.save();   
+    console.log(savedOrder)
+    
     const client = await Client.findById(clientId);
     
     client.orders.push(savedOrder);

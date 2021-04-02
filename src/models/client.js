@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Order = require('./order');
 
 const clientSchema = new mongoose.Schema({ 
-
+  
   name: {
     type: String,
     required: true

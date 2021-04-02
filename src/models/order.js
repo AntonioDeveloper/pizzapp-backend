@@ -6,8 +6,8 @@ pizza: {
   required: true
 },
 split: {
-  type: Boolean,
-  default: false,
+  type: String,
+  default: "Não",
   required: true
 },
 dough: {
@@ -15,9 +15,9 @@ dough: {
   required: true,
 },
 extraSauce: {
-  type: Boolean,
+  type: String,
   required: true,
-  default: false
+  default: "Não"
 },
 delivery_address: {
   type: String,
@@ -37,7 +37,7 @@ status: {
   default: 'aberto'
 },
 // REFERS TO THE PARENT ENTITY
-client: {
+clientId: {
   type: mongoose.Schema.Types.ObjectId,
   ref:'Client'
 }
