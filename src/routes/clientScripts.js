@@ -14,11 +14,12 @@ router.get('/clients', async (req, res) => {
 });
 
 // Submit new clients
-router.post('/', async (req, res) => {
+router.post('/cadastrarcli', async (req, res) => {
   const client = new Client(req.body);
-  
+  console.log(client)
   try{
     const savedClient = await client.save()
+    console.log(savedClient)
     res.json(savedClient);
     } catch(err){
     res.json({message: err});
