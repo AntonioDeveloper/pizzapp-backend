@@ -27,7 +27,7 @@ mongoose.connect(process.env.ATLAS_URI,{useNewUrlParser: true, useCreateIndex: t
 
 
 
-app.listen(3001, function(){
+app.listen(process.env.PORT || 3001, function(){
   console.log("Tudo ok!");  
 });
 
