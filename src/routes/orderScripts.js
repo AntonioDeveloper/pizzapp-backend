@@ -58,7 +58,7 @@ router.delete('/:id', async (req, res) => {
 router.put('/update/:id', async(req, res) => {    
    
   try{
-    const updatedOrder = await Order.findByIdAndUpdate(req.params.id,
+    const updatedOrder = await Order.findOneAndUpdate({_id: req.params.id},
       {$set: {
         pizza: " ",
         split: req.body.item.split,
@@ -70,7 +70,7 @@ router.put('/update/:id', async(req, res) => {
         icon: req.body.item.icon,
         _id: req.body.item._id
       }}, {new: true});
-     
+     console.log(updatedOrder)
       res.json(updatedOrder);       
   } catch(err){
     res.json({message: err});
