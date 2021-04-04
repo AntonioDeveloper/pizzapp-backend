@@ -6,9 +6,7 @@ const cors = require('cors');
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-app.use(cors(
-  'http://localhost:3000'
-));
+app.use(cors());
 
 //ROUTES
 const clientRoute = require('./routes/clientScripts');
